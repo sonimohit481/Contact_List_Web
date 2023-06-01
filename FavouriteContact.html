@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="contact.png" />
+    <title>Favourites</title>
+    <link rel="stylesheet" href="Index.css" />
+  </head>
+
+  <body>
+    <nav>
+      <div>
+        <a href="./index.html">Home</a>
+      </div>
+      <div>
+        <a href="./AllContact.html">Contact list</a>
+      </div>
+      <div>
+        <a href="./FavouriteContact.html">Favourites</a>
+      </div>
+    </nav>
+    <section>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Phone No</th>
+            <th>Type</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </body>
+  <script>
+    var favList = JSON.parse(localStorage.getItem("favList")) || [];
+
+    favList?.forEach((contact) => {
+      let tr = document.createElement("tr");
+      let td_1 = document.createElement("td");
+      td_1.innerText = contact?.name;
+      let td_2 = document.createElement("td");
+      td_2.innerText = contact?.phone;
+      let td_3 = document.createElement("td");
+      td_3.innerText = contact?.type;
+
+      let td_4 = document.createElement("td");
+      let deleteButton = document.createElement("button");
+      deleteButton.innerText = "Delete";
+      deleteButton.setAttribute("class", "fav_btn");
+      deleteButton.addEventListener("click", function () {
+        // Remove the contact from the favorite list
+        favList = favList.filter(
+          (favContact) => favContact.name !== contact.name
+        );
+        localStorage.setItem("favList", JSON.stringify(favList));
+        // Remove the row from the table
+        tr.remove();
+      });
+      td_4.appendChild(deleteButton);
+
+      tr.append(td_1, td_2, td_3, td_4);
+      document.querySelector("tbody").appendChild(tr);
+    });
+  </script>
+</html>

@@ -1,0 +1,169 @@
+/* Common styles */
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  box-sizing: border-box;
+}
+
+/* Input styles */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Navigation styles */
+nav {
+  display: flex;
+  justify-content: space-evenly;
+  margin: auto;
+  padding: 20px 0px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+/* Section styles */
+section {
+  display: flex;
+  justify-content: center;
+}
+
+/* Form styles */
+form {
+  background-color: #deebbc;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 30vh;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Heading styles */
+h1 {
+  font-size: xx-large;
+}
+
+/* Label styles */
+label {
+  font-size: large;
+  margin: 10px 0px 5px 0px;
+}
+
+/* Input and select styles */
+input,
+select {
+  width: 100%;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+}
+
+/* Button styles */
+button {
+  margin: 10px auto;
+  width: 20%;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #fff;
+  font-size: medium;
+  font-weight: 700;
+}
+
+/* Link styles */
+a {
+  text-decoration: none;
+  font-size: xx-large;
+  font-weight: 600;
+  color: #cae97c;
+  text-shadow: 1px 2px #000;
+}
+
+/* Table styles */
+table {
+  border-collapse: collapse;
+  width: 70%;
+  background-color: rgb(222, 218, 218);
+  padding: 15px;
+  border-radius: 15px;
+  margin-top: 30vh;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+/* Table header styles */
+table tr:first-child th:first-child {
+  border-top-left-radius: 15px;
+}
+
+table tr:first-child th:last-child {
+  border-top-right-radius: 15px;
+}
+
+/* Table row styles */
+table tr:last-child td:first-child {
+  border-bottom-left-radius: 15px;
+}
+
+table tr:last-child td:last-child {
+  border-bottom-right-radius: 15px;
+}
+
+/* Table cell styles */
+th {
+  background-color: #deebbc;
+  padding: 10px;
+  text-align: left;
+}
+
+td {
+  padding: 10px;
+}
+
+/* Favorite button styles */
+.fav_btn {
+  margin: 0px;
+  width: 50%;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: #6cd2eb;
+  font-size: small;
+  font-weight: 600;
+}
+
+/* Media queries for responsive design */
+@media only screen and (max-width: 768px) {
+  /* Adjust the styles for smaller screens */
+  table {
+    width: 90%;
+    margin-top: 20vh;
+  }
+
+  /* Adjust the button width */
+  button {
+    width: 40%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  /* Adjust the styles for even smaller screens */
+  table {
+    width: 100%;
+    margin-top: 10vh;
+  }
+
+  /* Adjust the button width */
+  button {
+    width: 60%;
+  }
+}
+
+/* Scrollbar styles */
+body {
+  overflow-y: auto;
+}

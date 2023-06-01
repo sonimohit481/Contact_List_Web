@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="contact.png" />
+    <title>Contact</title>
+    <link rel="stylesheet" href="Index.css" />
+  </head>
+
+  <body>
+    <nav>
+      <div>
+        <a href="./index.html">Home</a>
+      </div>
+      <div>
+        <a href="./AllContact.html">Contact list</a>
+      </div>
+      <div>
+        <a href="./FavouriteContact.html">Favourites</a>
+      </div>
+    </nav>
+    <section>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Phone No</th>
+            <th>Type</th>
+            <th>Favorite</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </body>
+  <script>
+    var contactList = JSON.parse(localStorage.getItem("contactList")) || [];
+    var favList = JSON.parse(localStorage.getItem("favList")) || [];
+
+    contactList?.forEach((contact) => {
+      let tr = document.createElement("tr");
+      let td_1 = document.createElement("td");
+      td_1.innerText = contact?.name;
+      let td_2 = document.createElement("td");
+      td_2.innerText = contact?.phone;
+      let td_3 = document.createElement("td");
+      td_3.innerText = contact?.type;
+      let td_4 = document.createElement("td");
+      let favButton = document.createElement("button");
+      favButton.innerText = "Add to Favorites";
+      favButton.setAttribute("class", "fav_btn");
+      if (favList.find((favContact) => favContact.name === contact.name)) {
+        favButton.style.display = "none"; // Hide the button
+      } else {
+        favButton.addEventListener("click", function () {
+          favList.push(contact);
+          localStorage.setItem("favList", JSON.stringify(favList));
+          favButton.style.display = "none"; // Hide the button after adding to favorites
+        });
+      }
+
+      td_4.appendChild(favButton);
+      tr.append(td_1, td_2, td_3, td_4);
+      document.querySelector("tbody").appendChild(tr);
+    });
+  </script>
+</html>

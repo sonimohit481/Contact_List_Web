@@ -1,99 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="contact.png" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>home</title>
-    <link rel="stylesheet" href="./contact.html">
-    <link rel="stylesheet" href="./fav.html">
-    <style>
-        .nav {
-            display: flex;
-            justify-content: space-evenly;
-            margin: auto;
-            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-        }
+    <title>Home</title>
+    <link rel="stylesheet" href="Index.css" />
+  </head>
 
-        div>a {
-            text-decoration: none;
-            font-size: 2em;
-            font-weight: 700;
-        }
-        .f{
-            display: flex;
-            width: 50%;
-            text-align: center;
-            margin:10% auto;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-        }
-        .f input{
-            width: 70%;
-            padding: 5px;
-            margin: 5px;
-        }
-        select{
-            width: 40%;
-            padding: 5px;
-            margin: 5px;
-        }
-        .f button{
-            width: 50%;
-            padding: 5px;
-            text-align: center;
-            color: white;
-            background-color: black;
-            font-size: 1em;
-            font-weight: 600;
-            border-radius: 20px;
-            margin-left: 9%;
-        
-        }
-    </style>
-</head>
+  <body>
+    <nav>
+      <div>
+        <a href="./index.html">Home</a>
+      </div>
+      <div>
+        <a href="./AllContact.html">Contact list</a>
+      </div>
+      <div>
+        <a href="./FavouriteContact.html">Favourites</a>
+      </div>
+    </nav>
+    <section>
+      <form>
+        <h1>Enter your contact details</h1>
+        <label for="name">Name: </label>
+        <input type="text" placeholder="Enter name" id="name" />
+        <label for="phone_no">Phone no: </label>
+        <input
+          type="number"
+          placeholder="Enter Phone no "
+          id="phone_no"
+          min="0"
+        />
+        <label for="phone_type">Select type of contact</label>
+        <select id="phone_type">
+          <option hidden>Select</option>
+          <option value="Family">Family</option>
+          <option value="Friend">Friens</option>
+          <option value="Other">Other</option>
+        </select>
+        <button id="submit">Submit</button>
+      </form>
+    </section>
+  </body>
+  <script>
+    // If data exists in the local storage then assign it to the contactList
+    var contactList = JSON.parse(localStorage.getItem("contactList")) || [];
 
-<body>
-    <div class="nav">
-        <div>
-            <a href="./index.html">Home</a>
-        </div>
-        <div>
-            <a href="./contact.html">Contact list</a>
-        </div>
-        <div>
-            <a href="./fav.html">Favourites</a>
-        </div>
-    </div>
-    <div class="f">
-        <form>
-            <h1>Enter your contact details</h1>
-            <input type="text" placeholder="Enter name" id="name">
-            <input type="number" placeholder="Enter no" id="no">
-            <select id="type " >
-                <option value="">Select type</option>
-                <option value="Family">Family</option>
-                <option value="Friend">Friens</option>
-                <option value="Other">Other</option>
-            </select>
-                <button onclick="x()">Submit</button>
-        </form>
-    </div>
-</body>
-<script>
-    var contactList =JSON.parse(localStorage.getItem('contactList')) || [];
-    function x(){
-        var cobj={
-            name:document.getElementById('name').value,
-            no:document.getElementById('no').value,
-            type:document.getElementById('type').value
+    document.querySelector("#submit").addEventListener("click", submit);
+
+    function submit(event) {
+      event.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone_no").value.trim();
+      const type = document.getElementById("phone_type").value.trim();
+
+      if (name?.length < 4) {
+        alert("Name must be at least 4 characters");
+      } else if (phone?.length !== 10) {
+        alert("Phone must be at least 10 characters");
+      } else if (type === "Select") {
+        alert("Please select any type");
+      } else {
+        var finalObject = {
+          name,
+          phone,
+          type,
         };
-
-        contactList.push(cobj);
-        localStorage.setItem('contactList',JSON.stringify(contactList));
-        alert('Add contact to your contact list!')
+        contactList.push(finalObject);
+        localStorage.setItem("contactList", JSON.stringify(contactList));
+        alert("Add contact to your contact list!");
+        window.location.href = "ALLContact.html";
+      }
     }
-</script>
+  </script>
 </html>
