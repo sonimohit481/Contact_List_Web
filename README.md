@@ -2,7 +2,28 @@
 
 > A simple web application for managing contacts.
 
-![Contact List Web](./screenshots/screenshot1.png)
+
+## Live Demo
+
+Check out the live demo of the project [here](link-to-live-demo).
+
+
+
+
+## Screenshots
+
+
+![Screenshot 1](https://github.com/sonimohit481/Contact_List_Web/blob/main/images/2.png)
+*Home Screen with filed to add contact data*
+
+![Screenshot 2](https://github.com/sonimohit481/Contact_List_Web/blob/main/images/1.png)
+*Favourites contact page *
+
+![Contact List Web]()
+
+
+![Contact List Web]()
+
 
 ## Table of Contents
 
@@ -35,3 +56,5 @@
 
    ```shell
    git clone https://github.com/sonimohit481/Contact_List_Web.git
+   
+
