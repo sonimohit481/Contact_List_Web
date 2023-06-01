@@ -5,7 +5,7 @@
 
 ## Live Demo
 
-Check out the live demo of the project [here](link-to-live-demo).
+Check out the live demo of the project [here](https://contact-list-web.netlify.app/).
 
 
 
